@@ -19,12 +19,16 @@ public class GamblingSimulation {
         } else {
             stake--;// decrementing
         }
-        System.out.println("stake = " + stake);
 
     }
+    /*
+     * As a Calculative Gambler if won or lost 50% of the stake, would resign for
+     * the day
+     */
 
     public static void resignDayCheck() {
         int totalStake = 0;
+        stake = 0;
         while (stake != 50 && stake != -50) {
             winCheck();
         }
@@ -32,10 +36,22 @@ public class GamblingSimulation {
         System.out.println("Total stake for resign for a day is  " + totalStake);
 
     }
+    /*
+     * After 20 days of playing every day would like to know the total amount won or
+     * lost.
+     */
+
+    public static void monthlyWinOrLossCheck() {
+        int day;
+        for (day = 1; day <= 20; day++) {
+            System.out.printf("day %d\n", day);
+            resignDayCheck();
+        }
+    }
 
     public static void main(String[] args) {
         System.out.println("Welcome to Gambling Simulation");
-        resignDayCheck();
+        monthlyWinOrLossCheck();
     }
 
 }
