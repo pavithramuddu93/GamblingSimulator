@@ -6,6 +6,8 @@ public class GamblingSimulation {
     public static final int BET_PER_GAME = 1;
     public static final int WIN = 1;
     public static int stake = 0;/// intial gambler bets with 1
+    static int daysWonCount = 0;
+    static int daysLostCount = 0;
 
     /*
      * wincheck function will check if gambler wins or loss
@@ -46,7 +48,14 @@ public class GamblingSimulation {
         for (day = 1; day <= 20; day++) {
             System.out.printf("day %d\n", day);
             resignDayCheck();
+            if (stake == 50) {
+                daysWonCount++;
+            } else if (stake == -50) {
+                daysLostCount++;
+            }
         }
+        System.out.printf("days won for a month = %d\ndays lost for a month = %d\n", daysWonCount, daysLostCount);
+
     }
 
     public static void main(String[] args) {
